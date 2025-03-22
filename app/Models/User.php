@@ -15,15 +15,22 @@ class User extends Authenticatable
     /**
      * The attributes that are mass assignable.
      *
-     * @var string[]
+     * @var array
      */
     protected $fillable = [
         'name',
         'email',
         'password',
         'phone',
-        'location',
-        'about_me',
+        'role',
+        'business_name',
+        'address',
+        'latitude',
+        'longitude',
+        'approval_status',
+        'verified',
+        'onesignal_player_id',
+        'profile_picture',
     ];
 
     /**
@@ -43,6 +50,17 @@ class User extends Authenticatable
      */
     protected $casts = [
         'email_verified_at' => 'datetime',
+        'latitude' => 'decimal:8',
+        'longitude' => 'decimal:8',
+        'verified' => 'boolean',
     ];
-    
+
+    /**
+     * Automatically hash password when setting it.
+     */
+        public function setPasswordAttribute($value)
+    {
+        $this->attributes['password'] = $value; // No hashing here
+    }
+
 }

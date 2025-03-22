@@ -16,21 +16,24 @@ class SessionsController extends Controller
     public function store()
     {
         $attributes = request()->validate([
-            'email'=>'required|email',
-            'password'=>'required' 
+            'email' => 'required|email',
+            'password' => 'required'
         ]);
 
-        if(Auth::attempt($attributes))
-        {
-            session()->regenerate();
-            return redirect('dashboard')->with(['success'=>'You are logged in.']);
+        if (Auth::attempt($attributes)) {
+            // Check if the authenticated user's role is "admin" or "provider"
+            if (in_array(Auth::user()->role, ['admin', 'provider'])) {
+                session()->regenerate();
+                return redirect('dashboard');
+            } else {
+                Auth::logout(); // Logout the user if they don't have the required role
+                return back()->withErrors(['email' => 'Unauthorized access.']);
+            }
         }
-        else{
 
-            return back()->withErrors(['email'=>'Email or password invalid.']);
-        }
+        return back()->withErrors(['email' => 'Email or password invalid.']);
     }
-    
+
     public function destroy()
     {
 

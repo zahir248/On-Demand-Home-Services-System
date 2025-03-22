@@ -6,6 +6,7 @@ use App\Models\User;
 use Illuminate\Validation\Rule;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 
 class RegisterController extends Controller
 {
@@ -22,13 +23,18 @@ class RegisterController extends Controller
             'password' => ['required', 'min:5', 'max:20'],
             'agreement' => ['accepted']
         ]);
-        $attributes['password'] = bcrypt($attributes['password'] );
 
-        
+        // Set the default role to "provider"
+        $attributes['role'] = 'provider'; 
+        $attributes['password'] = Hash::make($attributes['password']);
 
-        session()->flash('success', 'Your account has been created.');
         $user = User::create($attributes);
         Auth::login($user); 
+
+        // Flash success message and user name to session
+        session()->flash('success', 'Your account has been created.');
+        session()->flash('user_name', $user->name);
+
         return redirect('/dashboard');
     }
 }

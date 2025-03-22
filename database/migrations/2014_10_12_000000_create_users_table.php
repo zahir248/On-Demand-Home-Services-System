@@ -18,9 +18,16 @@ class CreateUsersTable extends Migration
             $table->string('name');
             $table->string('email')->unique();
             $table->string('password');
-            $table->bigInteger('phone')->nullable();
-            $table->string('location')->nullable();
-            $table->string('about_me')->nullable();
+            $table->string('phone', 20)->unique();
+            $table->enum('role', ['admin', 'provider', 'customer'])->default('customer');
+            $table->string('business_name')->nullable(); // Nullable for providers
+            $table->text('address')->nullable(); // Nullable for providers
+            $table->decimal('latitude', 10, 8)->nullable(); // Nullable for providers
+            $table->decimal('longitude', 11, 8)->nullable(); // Nullable for providers
+            $table->enum('approval_status', ['pending', 'approved', 'rejected'])->nullable(); // Nullable for providers
+            $table->boolean('verified')->nullable(); // Nullable for providers
+            $table->string('onesignal_player_id')->nullable(); // OneSignal Device ID for push notifications
+            $table->string('profile_picture')->nullable();
             $table->rememberToken();
             $table->timestamps();
         });
