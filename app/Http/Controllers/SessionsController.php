@@ -21,18 +21,21 @@ class SessionsController extends Controller
         ]);
 
         if (Auth::attempt($attributes)) {
-            // Check if the authenticated user's role is "admin" or "provider"
-            if (in_array(Auth::user()->role, ['admin', 'provider'])) {
+            $user = Auth::user();
+
+            // Check if the authenticated user's role is "admin" or "provider" AND approval_status is "approved"
+            if (in_array($user->role, ['admin', 'provider']) && $user->approval_status === 'approved') {
                 session()->regenerate();
                 return redirect('dashboard');
             } else {
-                Auth::logout(); // Logout the user if they don't have the required role
+                Auth::logout(); // Logout the user if they don't meet the conditions
                 return back()->withErrors(['email' => 'Unauthorized access.']);
             }
         }
 
         return back()->withErrors(['email' => 'Email or password invalid.']);
     }
+
 
     public function destroy()
     {

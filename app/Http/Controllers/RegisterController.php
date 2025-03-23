@@ -26,15 +26,17 @@ class RegisterController extends Controller
 
         // Set the default role to "provider"
         $attributes['role'] = 'provider'; 
+        $attributes['approval_status'] = 'approved'; // Set approval_status to "approved"
         $attributes['password'] = Hash::make($attributes['password']);
 
         $user = User::create($attributes);
         Auth::login($user); 
 
         // Flash success message and user name to session
-        session()->flash('success', 'Your account has been created.');
+        // session()->flash('success', 'Your account has been created.');
         session()->flash('user_name', $user->name);
 
         return redirect('/dashboard');
     }
+
 }
