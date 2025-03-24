@@ -103,8 +103,9 @@
 </div>
 
 @include('customer.create')
-
-
+@include('customer.show')
+@include('customer.edit')
+@include('customer.delete')
 
 
 @endsection
