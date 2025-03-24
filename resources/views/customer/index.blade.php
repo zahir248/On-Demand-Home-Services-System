@@ -39,9 +39,6 @@
                                         Email
                                     </th>
                                     <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
-                                        Address
-                                    </th>
-                                    <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
                                         Registration Date
                                     </th>
                                     <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
@@ -77,9 +74,6 @@
                                             <p class="text-xs font-weight-bold mb-0">{{ $customer->email }}</p>
                                         </td>
                                         <td class="text-center">
-                                            <p class="text-xs font-weight-bold mb-0">{{ $customer->address }}</p>
-                                        </td>
-                                        <td class="text-center">
                                             <span class="text-secondary text-xs font-weight-bold">{{ $customer->created_at->format('d/m/Y') }}</span>
                                         </td>
                                         <td class="text-center">
@@ -107,6 +101,9 @@
         </div>
     </div>
 </div>
+
+@include('customer.create')
+
 
 
 

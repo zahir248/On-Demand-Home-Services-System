@@ -1,9 +1,9 @@
-<!-- Create Provider Modal -->
-<div class="modal fade" id="createProviderModal" tabindex="-1" aria-labelledby="createProviderModalLabel" aria-hidden="true">
+<!-- Create Customer Modal -->
+<div class="modal fade" id="createCustomerModal" tabindex="-1" aria-labelledby="createCustomerModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="createProviderModalLabel">Add New Provider</h5>
+                <h5 class="modal-title" id="createCustomerModalLabel">Add New Customer</h5>
                 <!-- <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button> -->
             </div>
             <div class="modal-body">
@@ -17,19 +17,15 @@
                     </div>
                 @endif
 
-                <form id="createProviderForm" method="POST" action="{{ route('providers.store') }}" enctype="multipart/form-data">
+                <form id="createCustomerForm" method="POST" action="{{ route('customers.store') }}" enctype="multipart/form-data">
                     @csrf
                     
                     <div class="row">
                         <!-- First Column -->
                         <div class="col-md-6">
-                            <div class="mb-3">
-                                <label for="business_name" class="form-label">Business Name</label>
-                                <input type="text" class="form-control" id="business_name" name="business_name" required>
-                            </div>
 
                             <div class="mb-3">
-                                <label for="name" class="form-label">Owner Name</label>
+                                <label for="name" class="form-label">Name</label>
                                 <input type="text" class="form-control" id="name" name="name" required>
                             </div>
 
@@ -67,24 +63,24 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-                <button type="button" class="btn btn-primary" id="submitProviderForm">Create Provider</button>
+                <button type="button" class="btn btn-primary" id="submitCustomerForm">Create Customer</button>
             </div>
         </div>
     </div>
 </div>
 
 <script>
-    document.getElementById('submitProviderForm').addEventListener('click', function () {
-        document.getElementById('createProviderForm').submit();
+    document.getElementById('submitCustomerForm').addEventListener('click', function () {
+        document.getElementById('createCustomerForm').submit();
     });
 </script>
 
 <script>
     document.addEventListener("DOMContentLoaded", function () {
         // Reset form when modal is hidden
-        const createModal = document.getElementById('createProviderModal');
+        const createModal = document.getElementById('createCustomerModal');
         createModal.addEventListener('hidden.bs.modal', function () {
-            document.getElementById('createProviderForm').reset();
+            document.getElementById('createCustomerForm').reset();
         });
     });
 </script>

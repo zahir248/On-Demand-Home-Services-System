@@ -47,11 +47,17 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-                <button type="submit" class="btn btn-primary">Update Provider</button>
+                <button type="button" class="btn btn-primary" id="updateProviderButton">Update Provider</button>
             </div>
         </div>
     </div>
 </div>
+
+<script>
+    document.getElementById("updateProviderButton").addEventListener("click", function () {
+        document.getElementById("editProviderForm").submit();
+    });
+</script>
 
 <script>
     document.addEventListener("DOMContentLoaded", function () {
