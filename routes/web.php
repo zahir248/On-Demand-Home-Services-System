@@ -12,6 +12,7 @@ use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\ServiceProviderController;
 use App\Http\Controllers\CustomerController;
+use App\Http\Controllers\CategoryController;
 
 /*
 |--------------------------------------------------------------------------
@@ -89,3 +90,8 @@ Route::post('providers/update-status', [ServiceProviderController::class, 'updat
 // customer
 
 Route::resource('customers', CustomerController::class)->middleware(['auth']);
+
+// category
+
+Route::resource('categories', CategoryController::class)->middleware(['auth']);
+
