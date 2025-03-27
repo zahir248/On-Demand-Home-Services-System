@@ -38,7 +38,7 @@
                         <div class="col-md-6">
                             <label for="service_category" class="form-label">Category</label>
                             <select class="form-control" id="service_category" name="category_id">
-                                <option value="" selected disabled>Select a Category</option>
+                                <option value="" selected disabled>Select Category</option>
                                 <!-- Options will be loaded dynamically -->
                             </select>
                         </div>
@@ -67,7 +67,7 @@
             .then(response => response.json())
                 .then(categories => {
                     const categorySelect = document.getElementById("service_category");
-                    categorySelect.innerHTML = '<option value="" selected disabled>Select a Category</option>';
+                    categorySelect.innerHTML = '<option value="" selected disabled>Select Category</option>';
 
                     categories.forEach(category => {
                         const option = new Option(category.name, category.id);
