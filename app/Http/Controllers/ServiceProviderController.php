@@ -130,7 +130,7 @@ class ServiceProviderController extends Controller
     {
         $request->validate([
             'provider_id' => 'required|exists:users,id',
-            'approval_status' => 'required|in:Approved,Rejected',
+            'approval_status' => 'required|in:Approved,Rejected,Pending',
         ]);
         
         $provider = User::findOrFail($request->provider_id);

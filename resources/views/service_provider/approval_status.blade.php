@@ -15,6 +15,7 @@
                         <label for="approval_status">Approval Status</label>
                         <select class="form-control" id="approval_status" name="approval_status">
                             <option value="Approved">Approved</option>
+                            <option value="Pending">Pending</option>
                             <option value="Rejected">Rejected</option>
                         </select>
                     </div>

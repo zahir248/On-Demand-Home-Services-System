@@ -86,13 +86,17 @@
                                             <span class="text-secondary text-xs font-weight-bold">{{ $provider->created_at->format('d/m/Y') }}</span>
                                         </td>
                                         <td class="text-center">
-                                            <span class="badge badge-sm bg-{{ $provider->approval_status == 'Approved' ? 'success' : ($provider->approval_status == 'Pending' ? 'warning' : 'secondary') }} approval-status-badge" 
+                                            <span class="badge badge-sm bg-{{ 
+                                                $provider->approval_status == 'approved' ? 'success' : 
+                                                ($provider->approval_status == 'pending' ? 'warning' : 
+                                                ($provider->approval_status == 'rejected' ? 'danger' : 'secondary')) 
+                                            }} approval-status-badge" 
                                                 data-id="{{ $provider->id }}" 
                                                 data-status="{{ $provider->approval_status }}"
                                                 style="cursor: pointer;" 
                                                 data-bs-toggle="modal" 
                                                 data-bs-target="#approvalStatusModal">
-                                                {{ $provider->approval_status }}
+                                                {{ ucfirst($provider->approval_status) }}
                                             </span>
                                         </td>
                                         <td class="text-center">

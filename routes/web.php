@@ -13,6 +13,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ServiceProviderController;
 use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\ServiceController;
 
 /*
 |--------------------------------------------------------------------------
@@ -94,4 +95,14 @@ Route::resource('customers', CustomerController::class)->middleware(['auth']);
 // category
 
 Route::resource('categories', CategoryController::class)->middleware(['auth']);
+
+// service
+
+Route::resource('services', ServiceController::class)->middleware(['auth']);
+
+Route::get('service-categories', [ServiceController::class, 'getCategories'])->middleware('auth');
+
+Route::post('services/update-status', [ServiceController::class, 'updateStatus'])->middleware('auth')->name('service.update-status');
+
+
 
