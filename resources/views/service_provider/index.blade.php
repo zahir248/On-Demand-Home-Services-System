@@ -67,10 +67,10 @@
                                         </td>
                                         <td class="text-center">
                                             <div>
-                                            <img src="{{ $provider->profile_picture !== 'default-avatar.png' 
+                                            <img src="{{ $provider->profile_picture && $provider->profile_picture !== 'default-avatar.png' 
                                                         ? asset('storage/' . $provider->profile_picture) 
                                                         : asset('assets/img/default-avatar.png') }}" 
-                                                    class="avatar avatar-sm me-3">
+                                                class="avatar avatar-sm me-3">
                                             </div>
                                         </td>
                                         <td class="text-center">

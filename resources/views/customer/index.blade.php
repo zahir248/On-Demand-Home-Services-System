@@ -26,10 +26,10 @@
                         <table class="table align-items-center mb-0">
                             <thead>
                                 <tr>
-                                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                    <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
                                         ID
                                     </th>
-                                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
+                                    <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
                                         Image
                                     </th>
                                     <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
@@ -56,12 +56,12 @@
                                 @else
                                     @foreach ($customers as $customer)
                                     <tr>
-                                        <td class="ps-4">
+                                        <td class="ps-4 text-center">
                                             <p class="text-xs font-weight-bold mb-0">{{ $customer->id }}</p>
                                         </td>
                                         <td class="text-center">
                                             <div>
-                                            <img src="{{ $customer->profile_picture !== 'default-avatar.png' 
+                                            <img src="{{ $customer->profile_picture && $customer->profile_picture !== 'default-avatar.png' 
                                                         ? asset('storage/' . $customer->profile_picture) 
                                                         : asset('assets/img/default-avatar.png') }}" 
                                                     class="avatar avatar-sm me-3">
