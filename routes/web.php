@@ -37,10 +37,6 @@ Route::group(['middleware' => 'auth'], function () {
 		return view('billing');
 	})->name('billing');
 
-	Route::get('profile', function () {
-		return view('profile');
-	})->name('profile');
-
 	Route::get('rtl', function () {
 		return view('rtl');
 	})->name('rtl');
@@ -58,8 +54,8 @@ Route::group(['middleware' => 'auth'], function () {
 	})->name('virtual-reality');
 
     Route::get('/logout', [SessionsController::class, 'destroy']);
-	Route::get('/user-profile', [InfoUserController::class, 'create']);
-	Route::post('/user-profile', [InfoUserController::class, 'store']);
+	Route::get('/profile', [InfoUserController::class, 'create']);
+	Route::post('/profile', [InfoUserController::class, 'store']);
     Route::get('/login', function () {
 		return view('dashboard');
 	})->name('sign-up');

@@ -40,7 +40,7 @@
             </div>
             <div class="card-body pt-4 p-3">
                 {{-- Keep enctype for file uploads (triggered by hidden input) --}}
-                <form action="/user-profile" method="POST" role="form text-left" enctype="multipart/form-data">
+                <form action="/profile" method="POST" role="form text-left" enctype="multipart/form-data">
                     @csrf
 
                     {{-- Hidden input field for profile picture --}}

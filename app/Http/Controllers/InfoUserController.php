@@ -79,7 +79,7 @@ class InfoUserController extends Controller
         $user->update($attributes);
         Log::info('User profile updated with:', $attributes);
 
-        return redirect('/user-profile')->with('success', 'Profile updated successfully');
+        return redirect('/profile')->with('success', 'Profile updated successfully');
     }
 
 }
