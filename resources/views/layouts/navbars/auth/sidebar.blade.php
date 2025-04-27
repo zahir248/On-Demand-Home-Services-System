@@ -106,7 +106,7 @@
       @endif
       @if (Auth::check() && Auth::user()->role === 'provider')
       <li class="nav-item">
-        <a class="nav-link {{ (Request::is('tables') ? 'active' : '') }}" href="{{ url('tables') }}">
+        <a class="nav-link {{ (Request::is('bookings') ? 'active' : '') }}" href="{{ url('bookings') }}">
           <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
             <svg width="12px" height="12px" viewBox="0 0 42 42" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
               <title>office</title>
@@ -122,7 +122,7 @@
               </g>
             </svg>
           </div>
-          <span class="nav-link-text ms-1">Booking</span>
+          <span class="nav-link-text ms-1">Bookings</span>
         </a>
       </li>
       @endif

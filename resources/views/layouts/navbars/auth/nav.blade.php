@@ -36,17 +36,17 @@
                 </a>
             </li>
             <li class="nav-item px-3 d-flex align-items-center">
-                <a href="javascript:;" class="nav-link text-body p-0">
+                <!-- <a href="javascript:;" class="nav-link text-body p-0">
                 <i class="fa fa-cog fixed-plugin-button-nav cursor-pointer"></i>
-                </a>
+                </a> -->
             </li>
             <li class="nav-item dropdown pe-2 d-flex align-items-center">
-                <a href="javascript:;" class="nav-link text-body p-0" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
+                <!-- <a href="javascript:;" class="nav-link text-body p-0" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
                 <i class="fa fa-bell cursor-pointer"></i>
-                </a>
+                </a> -->
                 <ul class="dropdown-menu  dropdown-menu-end  px-2 py-3 me-sm-n4" aria-labelledby="dropdownMenuButton">
                 <li class="mb-2">
-                    <a class="dropdown-item border-radius-md" href="javascript:;">
+                    <!-- <a class="dropdown-item border-radius-md" href="javascript:;">
                     <div class="d-flex py-1">
                         <div class="my-auto">
                         <img src="../assets/img/team-2.jpg" class="avatar avatar-sm  me-3 ">
@@ -61,7 +61,7 @@
                         </p>
                         </div>
                     </div>
-                    </a>
+                    </a> -->
                 </li>
                 <li class="mb-2">
                     <a class="dropdown-item border-radius-md" href="javascript:;">

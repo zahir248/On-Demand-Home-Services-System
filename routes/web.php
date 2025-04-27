@@ -14,6 +14,7 @@ use App\Http\Controllers\ServiceProviderController;
 use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ServiceController;
+use App\Http\Controllers\BookingController;
 
 /*
 |--------------------------------------------------------------------------
@@ -99,5 +100,8 @@ Route::get('service-categories', [ServiceController::class, 'getCategories'])->m
 
 Route::post('services/update-status', [ServiceController::class, 'updateStatus'])->middleware('auth')->name('service.update-status');
 
+// booking
+
+Route::resource('bookings', BookingController::class)->middleware(['auth']);
 
 
