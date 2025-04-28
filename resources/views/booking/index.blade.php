@@ -39,6 +39,9 @@
                                         Date
                                     </th>
                                     <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                        Payment Status
+                                    </th>
+                                    <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
                                         Status
                                     </th>
                                     <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
@@ -67,6 +70,11 @@
                                         </td>
                                         <td class="text-center">
                                             <p class="text-xs font-weight-bold mb-0">{{ $booking->scheduled_at }}</p>
+                                        </td>
+                                        <td class="text-center">
+                                            <span class="badge bg-{{ $booking->payment_status == 'paid' ? 'success' : 'warning' }}">
+                                                {{ ucfirst($booking->payment_status	) }}
+                                            </span>
                                         </td>
                                         <td class="text-center">
                                             <span class="badge bg-{{ $booking->status == 'confirmed' ? 'success' : 'warning' }}">
@@ -107,6 +115,8 @@
         </div>
     </div>
 </div>
+
+@include('booking.create')
 
 @endsection
 

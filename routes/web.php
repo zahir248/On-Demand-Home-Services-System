@@ -104,4 +104,8 @@ Route::post('services/update-status', [ServiceController::class, 'updateStatus']
 
 Route::resource('bookings', BookingController::class)->middleware(['auth']);
 
+Route::get('fetch-services', [BookingController::class, 'getServices'])->middleware('auth');
+
+Route::get('fetch-customers', [BookingController::class, 'getCustomers'])->middleware('auth');
+
 
