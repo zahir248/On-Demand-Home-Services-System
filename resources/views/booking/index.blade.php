@@ -72,12 +72,32 @@
                                             <p class="text-xs font-weight-bold mb-0">{{ $booking->scheduled_at }}</p>
                                         </td>
                                         <td class="text-center">
-                                            <span class="badge bg-{{ $booking->payment_status == 'paid' ? 'success' : 'warning' }}">
-                                                {{ ucfirst($booking->payment_status	) }}
+                                            <span class="badge 
+                                                @if($booking->payment_status === 'paid') bg-success
+                                                @elseif($booking->payment_status === 'pending') bg-warning
+                                                @elseif($booking->payment_status === 'failed') bg-danger
+                                                @else bg-secondary
+                                                @endif"
+                                                data-id="{{ $booking->id }}" 
+                                                data-status="{{ $booking->payment_status }}"
+                                                style="cursor: pointer;" 
+                                                data-bs-toggle="modal" 
+                                                data-bs-target="#bookingPaymentStatusModal">
+                                                {{ ucfirst($booking->payment_status) }}
                                             </span>
                                         </td>
                                         <td class="text-center">
-                                            <span class="badge bg-{{ $booking->status == 'confirmed' ? 'success' : 'warning' }}">
+                                            <span class="badge @if($booking->status === 'completed') bg-success
+                                                @elseif($booking->status === 'confirmed') bg-warning
+                                                @elseif($booking->status === 'pending') bg-warning
+                                                @elseif($booking->status === 'canceled') bg-danger
+                                                @else bg-secondary
+                                                @endif"
+                                                data-id="{{ $booking->id }}"
+                                                data-status="{{ $booking->status }}"
+                                                style="cursor: pointer;"
+                                                data-bs-toggle="modal"
+                                                data-bs-target="#bookingStatusModal">
                                                 {{ ucfirst($booking->status) }}
                                             </span>
                                         </td>
@@ -117,6 +137,8 @@
 </div>
 
 @include('booking.create')
+@include('booking.payment_status')
+@include('booking.status')
 
 @endsection
 

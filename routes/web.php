@@ -108,4 +108,9 @@ Route::get('fetch-services', [BookingController::class, 'getServices'])->middlew
 
 Route::get('fetch-customers', [BookingController::class, 'getCustomers'])->middleware('auth');
 
+Route::post('/bookings/update-payment-status', [BookingController::class, 'updatePaymentStatus'])->name('bookings.update-payment-status');
+
+Route::post('/bookings/update-status', [BookingController::class, 'updateStatus'])->name('bookings.update-status');
+
+
 

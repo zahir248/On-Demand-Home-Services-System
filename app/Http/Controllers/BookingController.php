@@ -44,4 +44,55 @@ class BookingController extends Controller
         return response()->json($customers);
     }
 
+    public function store(Request $request)
+    {
+        // Validate the incoming request
+        $validated = $request->validate([
+            'service_id'   => 'required|exists:services,id',
+            'customer_id'  => 'required|exists:users,id',
+            'scheduled_at' => 'required|date|after_or_equal:now',
+        ]);
+
+        // Create the booking
+        $booking = Booking::create([
+            'service_id'     => $validated['service_id'],
+            'customer_id'    => $validated['customer_id'],
+            'scheduled_at'   => $validated['scheduled_at'],
+            'provider_id'    => auth()->id(),          
+            'status'         => 'pending',
+            'payment_status' => 'pending',
+        ]);
+
+        // Redirect back with success message
+        return redirect()->route('bookings.index');
+    }
+
+    public function updatePaymentStatus(Request $request)
+    {
+        $request->validate([
+            'booking_id'     => 'required|exists:bookings,id',
+            'payment_status' => 'required|in:pending,paid,failed',
+        ]);
+
+        Booking::where('id', $request->booking_id)
+            ->update(['payment_status' => $request->payment_status]);
+
+        return redirect()->route('bookings.index');
+    }
+
+    public function updateStatus(Request $request)
+    {
+        $request->validate([
+            'booking_id'     => 'required|exists:bookings,id',
+            'status' => 'required|in:pending,confirmed,completed,canceled',
+        ]);
+
+        Booking::where('id', $request->booking_id)
+            ->update(['status' => $request->status]);
+
+        return redirect()->route('bookings.index');
+    }
+
+
+
 }
