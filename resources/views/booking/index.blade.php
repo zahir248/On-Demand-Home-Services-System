@@ -139,6 +139,7 @@
 @include('booking.create')
 @include('booking.payment_status')
 @include('booking.status')
+@include('booking.edit')
 
 @endsection
 

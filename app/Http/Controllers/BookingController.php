@@ -93,6 +93,42 @@ class BookingController extends Controller
         return redirect()->route('bookings.index');
     }
 
+    public function edit(Booking $booking)
+    {
+        return view('bookings.edit', compact('bookings'));
+    }
+
+    public function update(Request $request, Booking $booking)
+{
+    $request->validate([
+        'service_id' => 'nullable|exists:services,id',
+        'scheduled_at' => 'nullable|date|after_or_equal:now',
+    ]);
+
+    $data = [];
+
+    if ($request->filled('service_id')) {
+        $data['service_id'] = $request->service_id;
+    }
+
+    if ($request->filled('scheduled_at')) {
+        $data['scheduled_at'] = $request->scheduled_at;
+    }
+
+    if (!empty($data)) {
+        $booking->update($data);
+    }
+
+    return redirect()->route('bookings.index');
+}
+
+
+    public function show(Booking $booking)
+    {
+        return response()->json($booking);
+    }
+
+
 
 
 }
