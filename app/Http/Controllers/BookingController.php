@@ -99,36 +99,39 @@ class BookingController extends Controller
     }
 
     public function update(Request $request, Booking $booking)
-{
-    $request->validate([
-        'service_id' => 'nullable|exists:services,id',
-        'scheduled_at' => 'nullable|date|after_or_equal:now',
-    ]);
+    {
+        $request->validate([
+            'service_id' => 'nullable|exists:services,id',
+            'scheduled_at' => 'nullable|date|after_or_equal:now',
+        ]);
 
-    $data = [];
+        $data = [];
 
-    if ($request->filled('service_id')) {
-        $data['service_id'] = $request->service_id;
+        if ($request->filled('service_id')) {
+            $data['service_id'] = $request->service_id;
+        }
+
+        if ($request->filled('scheduled_at')) {
+            $data['scheduled_at'] = $request->scheduled_at;
+        }
+
+        if (!empty($data)) {
+            $booking->update($data);
+        }
+
+        return redirect()->route('bookings.index');
     }
-
-    if ($request->filled('scheduled_at')) {
-        $data['scheduled_at'] = $request->scheduled_at;
-    }
-
-    if (!empty($data)) {
-        $booking->update($data);
-    }
-
-    return redirect()->route('bookings.index');
-}
-
 
     public function show(Booking $booking)
     {
         return response()->json($booking);
     }
 
+    public function destroy(Booking $booking)
+    {
+        $booking->delete();
 
-
+        return redirect()->route('bookings.index');
+    }
 
 }

@@ -105,7 +105,7 @@
                                             <a href="#" class="mx-2 text-secondary edit-booking" data-id="{{ $booking->id }}" data-bs-toggle="modal" data-bs-target="#editBookingModal">
                                                 <i class="fas fa-edit"></i>
                                             </a>
-                                            <a href="#" class="mx-2 text-secondary delete-booking" data-id="{{ $booking->id }}" data-bs-toggle="modal" data-bs-target="#deleteModal">
+                                            <a href="#" class="mx-2 text-secondary delete-booking" data-id="{{ $booking->id }}" data-bs-toggle="modal" data-bs-target="#deleteBookingModal">
                                                 <i class="fas fa-trash"></i>
                                             </a>
                                         </td>
@@ -140,6 +140,7 @@
 @include('booking.payment_status')
 @include('booking.status')
 @include('booking.edit')
+@include('booking.delete')
 
 @endsection
 
